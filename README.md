@@ -20,6 +20,9 @@ All experiments are executed on the same local physical machine using Docker con
 - **Preprocessing**:
   - Each image is flattened into a 1D array of 784 features.
 - **Model Architecture**:
+
+![single_worker](model.svg)
+
   - Input: 784 features
   - Layer 1: Dense(25, ReLU) — 19,625 parameters
   - Layer 2: Dense(15, ReLU) — 390 parameters
