@@ -1,0 +1,7 @@
+tensorflow>=2.10.0,<2.16.0   # ổn định và tích hợp tf.keras
+numpy>=1.20,<1.26
+matplotlib>=3.0.0
+pandas>=1.3.0,<2.0
+scipy>=1.6.0
+scikit-learn
+# keras được dùng qua tf.keras, không cần cài thêm

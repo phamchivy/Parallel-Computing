@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  worker1:
+    image: my-tf-worker
+    container_name: worker1
+    environment:
+      - TF_CONFIG={"cluster":{"worker":["worker1:2222","worker2:2222","worker3:2222"]},"task":{"type":"worker","index":0}}
+      - CUDA_VISIBLE_DEVICES=""  # Chặn sử dụng GPU
+      - TF_ENABLE_ONEDNN_OPTS=1  # Tối ưu TensorFlow trên CPU
+    volumes:
+      - ./output:/app/output
+    networks:
+      - training_network
+
+  worker2:
+    image: my-tf-worker
+    container_name: worker2
+    environment:
+      - TF_CONFIG={"cluster":{"worker":["worker1:2222","worker2:2222","worker3:2222"]},"task":{"type":"worker","index":1}}
+      - CUDA_VISIBLE_DEVICES=""
+      - TF_ENABLE_ONEDNN_OPTS=1
+    volumes:
+      - ./output:/app/output
+    networks:
+      - training_network
+
+  worker3:
+    image: my-tf-worker
+    container_name: worker3
+    environment:
+      - TF_CONFIG={"cluster":{"worker":["worker1:2222","worker2:2222","worker3:2222"]},"task":{"type":"worker","index":2}}
+      - CUDA_VISIBLE_DEVICES=""
+      - TF_ENABLE_ONEDNN_OPTS=1
+    volumes:
+      - ./output:/app/output
+    networks:
+      - training_network
+
+networks:
+  training_network:
+    driver: bridge
