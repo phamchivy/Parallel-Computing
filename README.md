@@ -21,7 +21,7 @@ All experiments are executed on the same local physical machine using Docker con
   - Each image is flattened into a 1D array of 784 features.
 - **Model Architecture**:
 
-![model](model.svg)
+
 
   - Input: 784 features
   - Layer 1: Dense(25, ReLU) — 19,625 parameters
